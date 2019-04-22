@@ -102,7 +102,6 @@ client.search.query(query_external, function (err, req, result_external) {
     console.log(err);	
     return;
   }
-  // console.log(JSON.stringify(result_external, null, 2, true));
   
 	if (JSON.stringify(result_external) === '[]')
 		{
@@ -139,28 +138,8 @@ client.search.query(query_phone, function (err, req, result_phone) {
 	if (JSON.stringify(result_phone) === '[]')
 		{
 			console.log("OK");
-			
-				// var user = {
-						// "user": {
-							// "name": "Client: "+from,
-							// "phone": "+212"+from
-							// "phone": from,
-							// "email": email
-								// }
-							// };
-
-			// client.users.create(user, function (err, req, result) {
-			  // if (err) {
-				// console.log(err);
-				// return;
-			  // }
-			  // console.log(JSON.stringify(result, null, 2, true));
-			// });
-
-	/*************************************************/
 
 	var ticket = {
-					  // "display_to_agent": 374667601913,
 					  "ticket":
 						{
 							"via_id": 45,
