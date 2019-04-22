@@ -70,38 +70,6 @@ app.get('/express_get',function(req,res) {
 	{
 		 qualif = "Transfert à Ulteam";
 	} 
-	else if (qualifId == 4) 
-	{
-		 qualif = "Vente ok";
-	}
-	else if (qualifId == 5) 
-	{
-		 qualif = "Vente Ko";
-	}
-	else if (qualifId == 90) 
-	{
-		 qualif = "Occupé";
-	}
-	else if (qualifId == 91) 
-	{
-		 qualif = "faux numéro";
-	}
-	else if (qualifId == 92) 
-	{
-		 qualif = "absent";
-	}
-	else if (qualifId == 93) 
-	{
-		 qualif = "répondeur";
-	}
-	else if (qualifId == 94) 
-	{
-		 qualif = "rappel personnel";
-	}
-	else if (qualifId == 95) 
-	{
-		 qualif = "relance";
-	}
 	else 
 	{
 		 qualif = "indisponible";
