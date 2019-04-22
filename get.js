@@ -52,7 +52,10 @@ app.get('/express_get',asyncHandler(async (req, res, next) => {
 	
 	var to=JSON.parse(JSON.stringify(response.to));
 	console.log(to);
-
+	
+	// var Id_requ=JSON.parse(JSON.stringify(response.Id_requ));
+	// console.log(Id_requ);
+	
 	var Id_agent=JSON.parse(JSON.stringify(response.Id_agent));
 	console.log(Id_agent);
 	
@@ -87,42 +90,6 @@ else
 	{
 		 qualif = "Contacts non argumentés";
 	}
-	else if (qualifId == 3) 
-	{
-		 qualif = "Transfert à Ulteam";
-	} 
-	else if (qualifId == 4) 
-	{
-		 qualif = "Vente ok";
-	}
-	else if (qualifId == 5) 
-	{
-		 qualif = "Vente Ko";
-	}
-	else if (qualifId == 90) 
-	{
-		 qualif = "Occupé";
-	}
-	else if (qualifId == 91) 
-	{
-		 qualif = "faux numéro";
-	}
-	else if (qualifId == 92) 
-	{
-		 qualif = "absent";
-	}
-	else if (qualifId == 93) 
-	{
-		 qualif = "répondeur";
-	}
-	else if (qualifId == 94) 
-	{
-		 qualif = "rappel personnel";
-	}
-	else if (qualifId == 95) 
-	{
-		 qualif = "relance";
-	}
 	else 
 	{
 		 qualif = "indisponible";
@@ -132,13 +99,27 @@ else
 
 client.search.query(query_external, function (err, req, result_external) {
   if (err) {
-    console.log(err);
+    console.log(err);	
     return;
   }
-  console.log(JSON.stringify(result_external, null, 2, true));
+  // console.log(JSON.stringify(result_external, null, 2, true));
   
-  	var val_external = JSON.parse(JSON.stringify(result_external));
-	var Id_agent =val_external[0].id ; 
+	if (JSON.stringify(result_external) === '[]')
+		{
+			var myArray = [378196941193,378196941373,378197100133,378197100153];  
+			
+			var Id_agent=myArray[Math.floor(Math.random() * myArray.length)]; 
+			console.log("Id_agent false");
+			
+		}
+	else
+		{
+			var val_external = JSON.parse(JSON.stringify(result_external));
+			var Id_agent =val_external[0].id; 	
+			console.log("Id_agent true");
+		
+		}
+  	
 
 	/*************************************************/
 	
@@ -159,10 +140,27 @@ client.search.query(query_phone, function (err, req, result_phone) {
 		{
 			console.log("OK");
 			
+				// var user = {
+						// "user": {
+							// "name": "Client: "+from,
+							// "phone": "+212"+from
+							// "phone": from,
+							// "email": email
+								// }
+							// };
+
+			// client.users.create(user, function (err, req, result) {
+			  // if (err) {
+				// console.log(err);
+				// return;
+			  // }
+			  // console.log(JSON.stringify(result, null, 2, true));
+			// });
 
 	/*************************************************/
 
 	var ticket = {
+					  // "display_to_agent": 374667601913,
 					  "ticket":
 						{
 							"via_id": 45,
@@ -198,6 +196,7 @@ client.search.query(query_phone, function (err, req, result_phone) {
 	else
 		{
 			console.log("KO");
+			console.log(Id_agent);
 			var Id_requ =val_phone[0].id; 
 
 			if( inout == 1)	
@@ -265,3 +264,4 @@ var server = app.listen(8000,function() {
     var port = server.address().port;
     console.log('App running on http://127.0.0.1:8000')
 })
+
