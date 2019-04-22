@@ -52,10 +52,7 @@ app.get('/express_get',asyncHandler(async (req, res, next) => {
 	
 	var to=JSON.parse(JSON.stringify(response.to));
 	console.log(to);
-	
-	// var Id_requ=JSON.parse(JSON.stringify(response.Id_requ));
-	// console.log(Id_requ);
-	
+
 	var Id_agent=JSON.parse(JSON.stringify(response.Id_agent));
 	console.log(Id_agent);
 	
@@ -162,27 +159,10 @@ client.search.query(query_phone, function (err, req, result_phone) {
 		{
 			console.log("OK");
 			
-				// var user = {
-						// "user": {
-							// "name": "Client: "+from,
-							// "phone": "+212"+from
-							// "phone": from,
-							// "email": email
-								// }
-							// };
-
-			// client.users.create(user, function (err, req, result) {
-			  // if (err) {
-				// console.log(err);
-				// return;
-			  // }
-			  // console.log(JSON.stringify(result, null, 2, true));
-			// });
 
 	/*************************************************/
 
 	var ticket = {
-					  // "display_to_agent": 374667601913,
 					  "ticket":
 						{
 							"via_id": 45,
@@ -285,12 +265,3 @@ var server = app.listen(8000,function() {
     var port = server.address().port;
     console.log('App running on http://127.0.0.1:8000')
 })
-
-
-
-
-
-
-
-
-
